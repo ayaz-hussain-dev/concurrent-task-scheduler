@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "concurrent-task-scheduler"
+version = "1.0.0"
+description = "Dependency-aware asyncio task scheduler with retries and timeouts"
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Portfolio Project"}]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+task-scheduler-demo = "task_scheduler.__main__:main"
