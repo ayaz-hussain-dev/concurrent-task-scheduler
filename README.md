@@ -30,6 +30,35 @@ Run the fuller example:
 python examples/demo.py
 ```
 
+## Docker
+
+Build the runtime image:
+
+```bash
+docker build --target runtime -t concurrent-task-scheduler .
+```
+
+Run the built-in scheduler demonstration:
+
+```bash
+docker run --rm concurrent-task-scheduler
+```
+
+Run the fuller example:
+
+```bash
+docker run --rm concurrent-task-scheduler python examples/demo.py
+```
+
+Build the test image and run the complete test suite inside Docker:
+
+```bash
+docker build --target test -t concurrent-task-scheduler-test .
+docker run --rm concurrent-task-scheduler-test
+```
+
+The Docker workflow in `.github/workflows/docker.yml` repeats these build, test and runtime checks automatically on GitHub after each push or pull request.
+
 ## Usage
 
 ```python

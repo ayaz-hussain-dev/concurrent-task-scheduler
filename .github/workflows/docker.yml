@@ -1,0 +1,24 @@
+name: Docker
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build test image
+        run: docker build --target test -t concurrent-task-scheduler:test .
+
+      - name: Run tests in Docker
+        run: docker run --rm concurrent-task-scheduler:test
+
+      - name: Build runtime image
+        run: docker build --target runtime -t concurrent-task-scheduler:runtime .
+
+      - name: Run scheduler demo in Docker
+        run: docker run --rm concurrent-task-scheduler:runtime
